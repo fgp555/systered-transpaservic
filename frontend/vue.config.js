@@ -3,12 +3,9 @@ module.exports = {
   configureWebpack: {
     resolve: {
       fallback: {
-        "https": require.resolve("https-browserify"),
-        "http": require.resolve("stream-http")
-      }
+        https: require.resolve("https-browserify"),
+        http: require.resolve("stream-http"),
+      },
     },
-   
-    
-  }
+  },
 };
-

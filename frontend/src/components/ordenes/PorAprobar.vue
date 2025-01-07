@@ -4,10 +4,7 @@
       <div class="container">
         <h4 style="color: aliceblue !important;">Administración - TranspaServic</h4>
       </div>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     </header>
 
     <section class="main" style="margin-top: -10px; height: auto;">
@@ -153,10 +150,14 @@ export default {
 
 .table-container {
   max-width: 80%;
-  height: 400px; /* Altura fija del contenedor */
-  overflow-y: auto; /* Habilita la barra de desplazamiento vertical */
-  border: 1px solid #ccc; /* Opcional: añade un borde al contenedor */
-  padding: 10px; /* Opcional: añade un padding dentro del contenedor */
+  height: 400px;
+  /* Altura fija del contenedor */
+  overflow-y: auto;
+  /* Habilita la barra de desplazamiento vertical */
+  border: 1px solid #ccc;
+  /* Opcional: añade un borde al contenedor */
+  padding: 10px;
+  /* Opcional: añade un padding dentro del contenedor */
 }
 
 .bordered-table {
@@ -166,13 +167,18 @@ export default {
 
 .bordered-table th,
 .bordered-table td {
-  border: 1px solid #ccc; /* Borde de las celdas */
-  padding: 4px; /* Espaciado dentro de las celdas */
-  text-align: left; /* Alineación del texto */
-  font-size: 12px; /* Tamaño de fuente más pequeño */
+  border: 1px solid #ccc;
+  /* Borde de las celdas */
+  padding: 4px;
+  /* Espaciado dentro de las celdas */
+  text-align: left;
+  /* Alineación del texto */
+  font-size: 12px;
+  /* Tamaño de fuente más pequeño */
 }
 
 .bordered-table th {
-  background-color: #f2f2f2; /* Color de fondo de los encabezados */
+  background-color: #f2f2f2;
+  /* Color de fondo de los encabezados */
 }
 </style>

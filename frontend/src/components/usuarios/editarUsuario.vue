@@ -7,46 +7,46 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     </header>
 
-   
-      <div class="container2">
-        <h1 class="title">Editar Usuario</h1>
-        <form @submit.prevent="editarusuario" class="form">
-          <h4 style="color: aliceblue; text-align: left;">Prestadora Asociada</h4>
-          <input type="text" v-model="usuario.name" class="input" required readonly><br>
-          <h4 style="color: aliceblue; text-align: left;">Asociar Nueva Prestadora</h4>
-          <select v-model="usuario.name" name="empresa">
+
+    <div class="container2">
+      <h1 class="title">Editar Usuario</h1>
+      <form @submit.prevent="editarusuario" class="form">
+        <h4 style="color: aliceblue; text-align: left;">Prestadora Asociada</h4>
+        <input type="text" v-model="usuario.name" class="input" required readonly><br>
+        <h4 style="color: aliceblue; text-align: left;">Asociar Nueva Prestadora</h4>
+        <select v-model="usuario.name" name="empresa">
           <option value="noasociado">No Asociado</option>
-            <option value="copetran">Copetran</option>
-            <option value="cootransunidos">Cootransunidos</option>
-            <option value="cotaxi">Cotaxi</option>
-            <option value="cootransmagdalena">Cootransmagdalena</option>
-            <option value="transsander">Transsander</option>
-            <option value="concorde">Concorde</option>
-            <option value="transricaurte">Transricaurte</option>
-            <option value="catatumbo">Catatumbo</option>
-            <option value="cotrans">Cotrans</option>
-            <option value="sotracor">Sotracor</option>
-            <option value="traescor">Traescor</option>
-            <option value="ballegom">Ballegom</option>
-            <option value="cotransar">Cotransar</option>
-            <option value="cootransmor">Cootransmor</option>
-            <option value="sotramagdalena">Sotramagdalena</option>
-            <option value="cotrasangil">Cotrasangil</option>
-            <option value="cotrasaravita">Cotrasaravita</option>
-            <option value="cotranstame">Cotranstame</option>
-            <option value="cotranal">Cotranal</option>
-            <option value="motilones">Motilones</option>
-            <option value="cooptmotilon">Cooptmotilon</option>
-          </select><br>
-          <h4 style="color: aliceblue; text-align: left;">Nombre Completo</h4>
-          <input type="text" v-model="usuario.lastname" class="input" required><br>
-          <h4 style="color: aliceblue; text-align: left;">Correo</h4>
-          <input type="text" v-model="usuario.email" class="input" required><br>
-          <h4 style="color: aliceblue; text-align: left;">Teléfono de Contacto</h4>
-          <input type="text" v-model="usuario.phone" class="input" required><br>
-          <button type="submit" class="button">Editar Usuario</button><br>
-        </form>
-      </div>
+          <option value="copetran">Copetran</option>
+          <option value="cootransunidos">Cootransunidos</option>
+          <option value="cotaxi">Cotaxi</option>
+          <option value="cootransmagdalena">Cootransmagdalena</option>
+          <option value="transsander">Transsander</option>
+          <option value="concorde">Concorde</option>
+          <option value="transricaurte">Transricaurte</option>
+          <option value="catatumbo">Catatumbo</option>
+          <option value="cotrans">Cotrans</option>
+          <option value="sotracor">Sotracor</option>
+          <option value="traescor">Traescor</option>
+          <option value="ballegom">Ballegom</option>
+          <option value="cotransar">Cotransar</option>
+          <option value="cootransmor">Cootransmor</option>
+          <option value="sotramagdalena">Sotramagdalena</option>
+          <option value="cotrasangil">Cotrasangil</option>
+          <option value="cotrasaravita">Cotrasaravita</option>
+          <option value="cotranstame">Cotranstame</option>
+          <option value="cotranal">Cotranal</option>
+          <option value="motilones">Motilones</option>
+          <option value="cooptmotilon">Cooptmotilon</option>
+        </select><br>
+        <h4 style="color: aliceblue; text-align: left;">Nombre Completo</h4>
+        <input type="text" v-model="usuario.lastname" class="input" required><br>
+        <h4 style="color: aliceblue; text-align: left;">Correo</h4>
+        <input type="text" v-model="usuario.email" class="input" required><br>
+        <h4 style="color: aliceblue; text-align: left;">Teléfono de Contacto</h4>
+        <input type="text" v-model="usuario.phone" class="input" required><br>
+        <button type="submit" class="button">Editar Usuario</button><br>
+      </form>
+    </div>
 
     <div class="form-group">
       <button @click="atras" class="button2">Regresar</button>
@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     editarusuario() {
-      const idusuario = this.$route.params.userid; 
+      const idusuario = this.$route.params.userid;
       const userData = {
         id: idusuario,
         name: this.usuario.name,

@@ -4,10 +4,7 @@
       <div class="container">
         <h4 style="color: aliceblue !important;">Administración - TranspaServic</h4>
       </div>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     </header>
 
     <section class="main" style="margin-top: -10px; height: auto;">

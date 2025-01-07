@@ -4,10 +4,7 @@
       <div class="container">
         <h2 class="title">Administración - TranspaServic</h2>
       </div>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     </header>
 
     <section class="main" style="height: 700px !important;">
@@ -17,11 +14,7 @@
       </div>
 
       <center>
-        <input
-          type="text"
-          v-model="searchTerm"
-          placeholder="Buscar usuario..."
-        /><br><br>
+        <input type="text" v-model="searchTerm" placeholder="Buscar usuario..." /><br><br>
         <div class="table-container">
           <table class="bordered-table">
             <thead>
@@ -50,17 +43,17 @@
               </tr>
             </tbody>
           </table>
-          
+
         </div>
       </center><br><br>
       <div class="form-group">
-      <button @click="register" class="button">Crear Nuevo usuario</button>
-    </div>
-    <div class="form-group">
-      <button @click="atras" class="button2">Regresar</button>
-    </div>
+        <button @click="register" class="button">Crear Nuevo usuario</button>
+      </div>
+      <div class="form-group">
+        <button @click="atras" class="button2">Regresar</button>
+      </div>
     </section>
-    
+
   </div>
 </template>
 
@@ -126,10 +119,14 @@ export default {
 
 .table-container {
   max-width: 70%;
-  height: 400px; /* Altura fija del contenedor */
-  overflow-y: auto; /* Habilita la barra de desplazamiento vertical */
-  border: 1px solid #ccc; /* Opcional: añade un borde al contenedor */
-  padding: 10px; /* Opcional: añade un padding dentro del contenedor */
+  height: 400px;
+  /* Altura fija del contenedor */
+  overflow-y: auto;
+  /* Habilita la barra de desplazamiento vertical */
+  border: 1px solid #ccc;
+  /* Opcional: añade un borde al contenedor */
+  padding: 10px;
+  /* Opcional: añade un padding dentro del contenedor */
 }
 
 .bordered-table {
@@ -139,14 +136,19 @@ export default {
 
 .bordered-table th,
 .bordered-table td {
-  border: 1px solid #ccc; /* Borde de las celdas */
-  padding: 4px; /* Espaciado dentro de las celdas */
-  text-align: left; /* Alineación del texto */
-  font-size: 12px; /* Tamaño de fuente más pequeño */
+  border: 1px solid #ccc;
+  /* Borde de las celdas */
+  padding: 4px;
+  /* Espaciado dentro de las celdas */
+  text-align: left;
+  /* Alineación del texto */
+  font-size: 12px;
+  /* Tamaño de fuente más pequeño */
 }
 
 .bordered-table th {
-  background-color: #f2f2f2; /* Color de fondo de los encabezados */
+  background-color: #f2f2f2;
+  /* Color de fondo de los encabezados */
 }
 
 .dropdown {
@@ -167,7 +169,7 @@ export default {
   display: none;
   position: absolute;
   background-color: white;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   font-size: 12px;
 }

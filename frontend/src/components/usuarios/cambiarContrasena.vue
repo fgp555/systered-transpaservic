@@ -7,16 +7,16 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     </header>
 
-      <div class="container2" >
-        <h1 class="title">Cambiar Contraseña</h1>
-        <form @submit.prevent="cambiarcontraseña" class="form">
-          <h4 style="color: aliceblue; text-align: left;">Nueva Contraseña</h4>
-          <input type="password" v-model="password" class="input" required><br>
-          <h4 style="color: aliceblue; text-align: left;">Ingrese de Nuevo Contraseña</h4>
-          <input type="password" v-model="confirmPassword" class="input" required><br>
-          <button type="submit" class="button">Cambiar Contraseña</button><br>
-        </form>
-      </div>
+    <div class="container2">
+      <h1 class="title">Cambiar Contraseña</h1>
+      <form @submit.prevent="cambiarcontraseña" class="form">
+        <h4 style="color: aliceblue; text-align: left;">Nueva Contraseña</h4>
+        <input type="password" v-model="password" class="input" required><br>
+        <h4 style="color: aliceblue; text-align: left;">Ingrese de Nuevo Contraseña</h4>
+        <input type="password" v-model="confirmPassword" class="input" required><br>
+        <button type="submit" class="button">Cambiar Contraseña</button><br>
+      </form>
+    </div>
     <div class="form-group">
       <button @click="atras" class="button2">Regresar</button>
     </div>
@@ -51,7 +51,7 @@ export default {
         return;
       }
 
-      const idusuario = this.$route.params.userid; 
+      const idusuario = this.$route.params.userid;
       const userData = {
         id: idusuario,
         password: this.password,
