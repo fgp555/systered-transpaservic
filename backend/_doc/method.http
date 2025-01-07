@@ -1,0 +1,19 @@
+GET http://localhost:3000/api
+
+###
+GET http://localhost:3000/api/users/getAll
+
+###
+POST http://localhost:3000/api/users/create
+Content-Type: application/json
+
+{
+"user": {
+"email": "admdddin@transpaservic.com.co",
+"password": "12341234sdfasdfasd",
+"name": "Admin",
+"lastname": "Transpaservic",
+"phone": 3174232181,
+"image": "https://dcdn.penerated-7982424_1280.jpg"
+}
+}
