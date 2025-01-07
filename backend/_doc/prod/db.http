@@ -1,0 +1,28 @@
+###
+GET https://appsystered.com/api/db/backups-list
+Accept: application/json
+
+###
+POST https://appsystered.com/api/db/create-backup
+Accept: application/json
+
+###
+POST https://appsystered.com/api/db/restore/delivery_db
+Content-Type: application/json
+
+{"backupFileName": "backup_empty.sql"}
+
+###
+POST https://appsystered.com/api/db/delete-restore/delivery_db
+Content-Type: application/json
+
+{"backupFileName": "backup_empty.sql"}
+
+###
+POST https://appsystered.com/api/db/truncate-schema
+Content-Type: application/json
+
+{
+  "schemaName": "public",
+  "dbName": "delivery_db"
+}

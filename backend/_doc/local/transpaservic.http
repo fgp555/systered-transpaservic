@@ -1,0 +1,12 @@
+###
+GET https://transpaservic.com.co/api/users/getAllT
+
+
+### https://transpaservic.com.co/tikets/dist/index.html#/login
+POST https://transpaservic.com.co/api/users/loginT
+Content-Type: application/json
+
+{
+    "email": "admin@transpaservic.com.co",
+    "password": "Soporte123"
+}

@@ -1,0 +1,28 @@
+###
+GET http://localhost:3000/api/db/backups-list
+Accept: application/json
+
+###
+POST http://localhost:3000/api/db/create-backup
+Accept: application/json
+
+###
+POST http://localhost:3000/api/db/restore/delivery_db
+Content-Type: application/json
+
+{"backupFileName": "backup_empty.sql"}
+
+###
+POST http://localhost:3000/api/db/delete-restore/delivery_db
+Content-Type: application/json
+
+{"backupFileName": "backup_empty.sql"}
+
+###
+POST http://localhost:3000/api/db/truncate-schema
+Content-Type: application/json
+
+{
+  "schemaName": "public",
+  "dbName": "delivery_db"
+}

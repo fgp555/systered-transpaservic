@@ -1,12 +1,23 @@
 <template>
   <div id="app">
+    <AppNavbar />
+    <br>
+    <br>
+    <br>
+    <br>
+
     <router-view />
   </div>
 </template>
 
 <script>
+import AppNavbar from './components/AppNavbar.vue';
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    AppNavbar, // Actualiza el nombre aquí también
+  },
 };
 </script> 
 

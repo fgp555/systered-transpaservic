@@ -4,7 +4,7 @@ const path = require("path");
 /**
  * Subir el archivo a almacenamiento local
  * @param {File} file Objeto que será almacenado en el servidor local
- * @param {String} pathImage Nombre del archivo que será almacenado
+ * @param {String} pathImage Nombre base del archivo que será almacenado
  * @param {String} deletePathImage Ruta del archivo que se desea eliminar (opcional)
  */
 module.exports = (file, pathImage, deletePathImage) => {
@@ -27,8 +27,17 @@ module.exports = (file, pathImage, deletePathImage) => {
         fs.mkdirSync(uploadsDir);
       }
 
+      // Extraer la extensión del archivo original
+      const fileExtension = path.extname(file.originalname);
+      if (!fileExtension) {
+        return reject("El archivo cargado no tiene una extensión válida.");
+      }
+
+      // Agregar la extensión al nombre del archivo si no está presente
+      const finalFileName = pathImage.endsWith(fileExtension) ? pathImage : `${pathImage}${fileExtension}`;
+
       // Ruta completa para guardar el archivo
-      const filePath = path.resolve(uploadsDir, pathImage);
+      const filePath = path.resolve(uploadsDir, finalFileName);
 
       // Guardar archivo en el directorio local
       fs.writeFile(filePath, file.buffer, (err) => {
@@ -40,7 +49,7 @@ module.exports = (file, pathImage, deletePathImage) => {
         console.log("Archivo guardado con éxito en:", filePath);
 
         // Generar URL local para acceder al archivo
-        const localUrl = `/uploads/${pathImage}`;
+        const localUrl = `/uploads/${finalFileName}`;
         resolve(localUrl);
       });
     } catch (error) {

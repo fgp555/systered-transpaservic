@@ -1,5 +1,6 @@
-const dotenv = require("dotenv");
+// backend\config\config.js
 
+const dotenv = require("dotenv");
 dotenv.config();
 
 const promise = require("bluebird");

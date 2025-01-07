@@ -59,6 +59,7 @@
 
 <script>
 import axios from "axios";
+import { baseURL } from '../../services/service_baseURL';
 
 export default {
   data() {
@@ -87,7 +88,8 @@ export default {
     async obtenerOrdenesPendientes() {
       try {
         const response = await axios.get(
-          "http://138.197.94.5:3000/api/users/getAllT"
+          // "http://138.197.94.5:3000/api/users/getAllT"
+          `${baseURL}/api/users/getAllT`
         );
         this.ordenes = response.data; // Corregir el nombre de la propiedad
       } catch (error) {

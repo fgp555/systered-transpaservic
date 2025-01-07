@@ -1,3 +1,5 @@
+// backend\server.js
+
 const express = require("express");
 const app = express();
 const http = require("http");
@@ -10,6 +12,8 @@ const serviceAccount = require("./serviceAccountKey.json");
 const passport = require("passport");
 const io = require("socket.io")(server);
 const PORT = process.env.PORT || 3000;
+const path = require("path");
+const backupRestoreRoutes = require("./routes/backupRestoreRoutes");
 
 /* SOCKET*/
 const orderDeliverySocket = require("./sockets/orders_delivery_socket");
@@ -54,6 +58,18 @@ categories(app);
 address(app);
 orders(app);
 products(app, upload);
+app.use("/api/db", backupRestoreRoutes);
+
+
+const SPA_Path = "../frontend/dist";
+
+// Serve React static files from /public
+app.use(express.static(path.join(__dirname, SPA_Path)));
+
+// Catch-all route for React SPA
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, SPA_Path, "index.html"));
+});
 
 server.listen(
   PORT,

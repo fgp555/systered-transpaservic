@@ -58,6 +58,7 @@
 
 <script>
 import axios from 'axios';
+import { baseURL } from '../../services/service_baseURL';
 
 export default {
   data() {
@@ -83,11 +84,13 @@ export default {
       formData.append('image', this.image); // Adjuntar la imagen al formulario
 
       // Petición POST al servidor para registrar al usuario
-      axios.post('http://138.197.94.5:3000/api/users/createT', formData)
+      // axios.post('http://138.197.94.5:3000/api/users/createT', formData)
+      // axios.post('http://localhost:3000/api/users/create', formData)
+      axios.post(`${baseURL}/api/users/createT`, formData)
         .then(response => {
           console.log('Usuario registrado exitosamente:', response.data.data);
           alert('Usuario registrado exitosamente');
-          window.location.reload();
+          // window.location.reload();
         })
         .catch(error => {
           console.error('Error al registrar usuario:', error.response.data.message);

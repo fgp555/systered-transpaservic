@@ -1,0 +1,56 @@
+@var1=3
+
+###
+GET https://appsystered.com/api/users/getAllT
+
+
+###
+POST https://appsystered.com/api/users/createT
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="user"
+
+{
+    "email":"user{{var1}}@mail.com",
+    "password":"user{{var1}}@mail.com",
+    "name":"user{{var1}}@mail.com",
+    "lastname":"user{{var1}}@mail.com",
+    "phone":"123123{{var1}}"
+}
+--boundary--
+
+###
+POST https://appsystered.com/api/users/login
+Content-Type: application/json
+
+{
+    "email": "user{{var1}}@mail.com",
+    "password": "user{{var1}}@mail.com"
+}
+
+###
+POST https://appsystered.com/api/users/createT
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="user"
+
+{
+    "email":"admin@transpaservic.com.co",
+    "password":"Soporte123",
+    "name":"Admin",
+    "lastname":"Transpaservic",
+    "phone":"3174232179",
+    "image": "https://cdn.pixabay.com/photo/2023/05/09/20/36/ai-generated-7982424_1280.jpg"
+}
+--boundary--
+
+###
+POST https://appsystered.com/api/users/login
+Content-Type: application/json
+
+{
+    "email": "admin@transpaservic.com.co",
+    "password": "Soporte123"
+}

@@ -77,6 +77,8 @@ router.beforeEach((to, from, next) => {
     // Si no hay un token y el usuario intenta acceder a una ruta protegida,
     // redirigirlo al inicio de sesión
     next("/login");
+    // next();
+
   } else {
     // De lo contrario, permite que el usuario continúe navegando
     next();
