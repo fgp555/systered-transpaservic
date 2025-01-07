@@ -1,71 +1,51 @@
-const { Storage } = require("@google-cloud/storage");
-const { format } = require("util");
-const env = require("../config/env");
-const url = require("url");
-const { v4: uuidv4 } = require("uuid");
-const uuid = uuidv4();
-
-const storage = new Storage({
-  projectId: "estrenalo-62e96",
-  keyFilename: "./serviceAccountKey.json",
-});
-
-const bucket = storage.bucket("gs://estrenalo-62e96.appspot.com");
+const fs = require("fs");
+const path = require("path");
 
 /**
- * Subir el archivo a Firebase Storage
- * @param {File} file objeto que sera almacenado en Firebase Storage
+ * Subir el archivo a almacenamiento local
+ * @param {File} file Objeto que será almacenado en el servidor local
+ * @param {String} pathImage Nombre del archivo que será almacenado
+ * @param {String} deletePathImage Ruta del archivo que se desea eliminar (opcional)
  */
 module.exports = (file, pathImage, deletePathImage) => {
   return new Promise((resolve, reject) => {
-    console.log("delete path", deletePathImage);
-    if (deletePathImage) {
-      if (deletePathImage != null || deletePathImage != undefined) {
-        const parseDeletePathImage = url.parse(deletePathImage);
-        var ulrDelete = parseDeletePathImage.pathname.slice(23);
-        const fileDelete = bucket.file(`${ulrDelete}`);
-
-        fileDelete
-          .delete()
-          .then((imageDelete) => {
-            console.log("se borro la imagen con exito");
-          })
-          .catch((err) => {
-            console.log("Failed to remove photo, error:", err);
-          });
+    try {
+      // Eliminar archivo existente si se proporciona `deletePathImage`
+      if (deletePathImage) {
+        const filePathToDelete = path.resolve(__dirname, "../uploads", deletePathImage);
+        if (fs.existsSync(filePathToDelete)) {
+          fs.unlinkSync(filePathToDelete);
+          console.log("Archivo eliminado con éxito:", deletePathImage);
+        } else {
+          console.log("El archivo a eliminar no existe:", deletePathImage);
+        }
       }
-    }
 
-    if (pathImage) {
-      if (pathImage != null || pathImage != undefined) {
-        let fileUpload = bucket.file(`${pathImage}`);
-        let stream = fileUpload.createWriteStream();
-        const blobStream = stream.pipe(
-          fileUpload.createWriteStream({
-            metadata: {
-              contentType: "image/png",
-              metadata: {
-                firebaseStorageDownloadTokens: uuid,
-              },
-            },
-            resumable: false,
-          })
-        );
-
-        blobStream.on("error", (error) => {
-          console.log("Error al subir archivo a firebase", error);
-          reject("Something is wrong! Unable to upload at the moment.");
-        });
-
-        blobStream.on("finish", () => {
-          // The public URL can be used to directly access the file via HTTP.
-          const url = format(`https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${fileUpload.name}?alt=media&token=${uuid}`);
-          console.log("URL DE CLOUD STORAGE ", url);
-          resolve(url);
-        });
-
-        blobStream.end(file.buffer);
+      // Verificar si existe el directorio de uploads, si no, crearlo
+      const uploadsDir = path.resolve(__dirname, "../uploads");
+      if (!fs.existsSync(uploadsDir)) {
+        fs.mkdirSync(uploadsDir);
       }
+
+      // Ruta completa para guardar el archivo
+      const filePath = path.resolve(uploadsDir, pathImage);
+
+      // Guardar archivo en el directorio local
+      fs.writeFile(filePath, file.buffer, (err) => {
+        if (err) {
+          console.error("Error al guardar el archivo:", err);
+          return reject("No se pudo guardar el archivo en el servidor.");
+        }
+
+        console.log("Archivo guardado con éxito en:", filePath);
+
+        // Generar URL local para acceder al archivo
+        const localUrl = `/uploads/${pathImage}`;
+        resolve(localUrl);
+      });
+    } catch (error) {
+      console.error("Error durante el proceso de almacenamiento:", error);
+      reject("Error interno durante el almacenamiento del archivo.");
     }
   });
 };

@@ -97,13 +97,13 @@ module.exports = {
 
       console.log(`Datos enviados del usuario: ${user}`);
 
-      const file = req.file; // Cambiamos a un solo archivo
+      const files = req.files;
 
-      if (file) {
+      if (files.length > 0) {
         const pathImage = `image_${Date.now()}`; // NOMBRE DEL ARCHIVO
-        const url = await storage(file, pathImage);
+        const url = await storage(files[0], pathImage);
 
-        if (url) {
+        if (url != undefined && url != null) {
           user.image = url;
         }
       }
@@ -114,11 +114,11 @@ module.exports = {
 
       return res.status(201).json({
         success: true,
-        message: "El registro se realizo correctamente, ahora inicia sesión",
+        message: "El registro se realizo correctamente, ahora inicia sesion",
         data: data.id,
       });
     } catch (error) {
-      console.error(`Error: ${error}`);
+      console.log(`Error: ${error}`);
       return res.status(501).json({
         success: false,
         message: "Hubo un error con el registro del usuario",

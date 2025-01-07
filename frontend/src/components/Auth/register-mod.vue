@@ -88,7 +88,7 @@ export default {
         .then(response => {
           console.log('Usuario registrado exitosamente:', response.data.data);
           alert('Usuario registrado exitosamente');
-          // window.location.reload();
+          window.location.reload();
         })
         .catch(error => {
           console.error('Error al registrar usuario:', error.response.data.message);

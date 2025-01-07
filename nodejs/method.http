@@ -1,0 +1,27 @@
+# Obtener mensaje de login
+GET http://localhost:3000/api/users/login
+Content-Type: application/json
+
+###
+
+# Crear un nuevo usuario con imagen
+POST http://localhost:3000/api/users/create
+Content-Type: multipart/form-data
+
+# Cambia los valores de `email`, `password`, etc., según tus pruebas.
+# Reemplaza "path/to/image.jpg" con la ruta de una imagen en tu sistema local.
+# El formato de FormData se define aquí usando variables.
+Content-Disposition: form-data; name="user"
+
+{
+  "email": "test@mail.com",
+  "password": "123456",
+  "name": "John",
+  "lastname": "Doe",
+  "phone": "1234567890"
+}
+
+# Content-Disposition: form-data; name="image"; filename="image.jpg"
+# Content-Type: image/jpeg
+
+# < ./path/to/image.jpg
